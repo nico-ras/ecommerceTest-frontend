@@ -1,0 +1,13 @@
+#pageNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#pageNav span {
+    font-size: 1.5rem;
+    border: lightblue solid 1px;
+    padding: 0.3rem;
+    margin: 0.3rem; 
+}
