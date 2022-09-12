@@ -1,5 +1,8 @@
-let mainDiv = document.getElementById("mainDiv");
-let pageNav = document.getElementById("pageNav");
+let mainDiv = document.getElementById("mainDiv")
+let pageNav = document.getElementById("pageNav")
+let searchBtn = document.getElementById("searchBtn")
+let searchInput = document.getElementById("searchInput")
+
 
 
 //----------------------Consumo de api-------------
@@ -25,10 +28,33 @@ const getProducts = async (product) => {
   }
 };
 
+//---------------Ruta search------------------
+
+const getSearch = async(searchStr) => {
+    try {
+        const resp = await axios.post("http://localhost:3000/search", {
+             search: searchStr
+            });
+        console.log(resp.data.products)
+        let productosArr = resp.data.products;
+        return productosArr;
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+}
+
 //------------Manipulacion del DOM para listar productos-----------
-let showProducts = async (product) => {
+let showProducts = async (data, search=false) => {
+
+    let resp 
   try {
-    let resp = await getProducts(product);
+    if (search === true) {
+        resp = await getSearch(data);
+    }else {
+        resp = await getProducts(data);
+    }
+    
 
     let pageIndex = 0;
     let itemsPerPage = 8;
@@ -102,3 +128,12 @@ let showProducts = async (product) => {
 };
 
 showProducts();
+
+
+
+searchBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    let searchString = searchInput.value
+    console.log(searchString)
+    showProducts(searchString, true)
+})
