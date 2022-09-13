@@ -6,9 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bsale test</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Bsale test</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            categorias
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#" onclick="showProducts('bebida'); return false;">Bebida</a>
+            <a class="dropdown-item" href="#" onclick="showProducts('energeticas'); return false;">Bebida energetica</a>
+            <a class="dropdown-item" href="#" onclick="showProducts('cerveza'); return false;">Cerveza</a>
+            <a class="dropdown-item" href="#" onclick="showProducts('pisco'); return false;">Pisco</a>
+            <a class="dropdown-item" href="#" onclick="showProducts('ron'); return false;">Ron</a>
+            <a class="dropdown-item" href="#" onclick="showProducts('snack'); return false;">Snack</a>
+            <a class="dropdown-item" href="#" onclick="showProducts('vodka'); return false;">Vodka</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" onclick="showProducts(); return false;">Todos los productos</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <a class="nav-link" href="#">Carrito</a>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row" id="mainDiv">
     
+    </div>
+    <div id="pageNav">
+
+    </div>
+  </div>
     
       
 
