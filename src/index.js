@@ -22,7 +22,7 @@ const getProducts = async (product) => {
       let productosArr = resp.data.productos;
       return productosArr;
     } catch (err) {
-      // Handle Error Here
+      
       console.error(err);
     }
   }
@@ -35,11 +35,11 @@ const getSearch = async(searchStr) => {
         const resp = await axios.post("http://localhost:3000/search", {
              search: searchStr
             });
-        console.log(resp.data.products)
+        
         let productosArr = resp.data.products;
         return productosArr;
       } catch (err) {
-        // Handle Error Here
+        
         console.error(err);
       }
 }
@@ -88,7 +88,9 @@ let showProducts = async (data, search=false) => {
 <h5 class="card-title">${resp[i].name}</h5>
 <del class="card-text" style="color: red;">${beforePrice}</del>
 <p class="card-text">$ ${resp[i].price - discount}</p>
-<a href="#" class="btn btn-primary">Agragar al carrrito</a>
+<button type="button" class="carritoBtn btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Agregar al carrito
+</button>
 </div>
 </div>`;
 
@@ -101,6 +103,15 @@ let showProducts = async (data, search=false) => {
             img.alt = "default";
           });
         });
+
+        // let carritoBtns = document.getElementsByClassName("carritoBtn")
+        // carritoBtns.forEach((btn) => {
+        //     btn.addEventListener("click", (e) => {
+        //         e.preventDefault
+
+        //     })
+        // })
+
       }
     }
 
@@ -109,7 +120,7 @@ let showProducts = async (data, search=false) => {
     function loadPageNav() {
       pageNav.innerHTML = "";
 
-      console.log(Object.keys(resp).length);
+      
       for (let i = 0; i < Object.keys(resp).length / itemsPerPage; i++) {
         let span = document.createElement("span");
         span.innerHTML = i + 1;
@@ -134,6 +145,5 @@ showProducts();
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault()
     let searchString = searchInput.value
-    console.log(searchString)
     showProducts(searchString, true)
 })
