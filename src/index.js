@@ -2,14 +2,14 @@ let mainDiv = document.getElementById("mainDiv")
 let pageNav = document.getElementById("pageNav")
 let searchBtn = document.getElementById("searchBtn")
 let searchInput = document.getElementById("searchInput")
-
+const url = 'https://sleepy-lake-91005.herokuapp.com' || 'http://localhost:3000'
 
 
 //----------------------Consumo de api-------------
 const getProducts = async (product) => {
   if (product) {
     try {
-      const resp = await axios.get(`http://localhost:3000/${product}`);
+      const resp = await axios.get(`${url}/${product}`);
       let productosArr = resp.data.productos;
       return productosArr;
     } catch (err) {
@@ -18,7 +18,7 @@ const getProducts = async (product) => {
     }
   } else {
     try {
-      const resp = await axios.get("http://localhost:3000/");
+      const resp = await axios.get(url);
       let productosArr = resp.data.productos;
       return productosArr;
     } catch (err) {
@@ -32,7 +32,7 @@ const getProducts = async (product) => {
 
 const getSearch = async(searchStr) => {
     try {
-        const resp = await axios.post("http://localhost:3000/search", {
+        const resp = await axios.post(`${url}/search`, {
              search: searchStr
             });
         
